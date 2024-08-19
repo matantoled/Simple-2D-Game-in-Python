@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+pygame.font.init()
 
 WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -13,8 +14,14 @@ PLAYER_HEIGHT = 60
 
 PLAYER_VELOCITY = 5
 
-def draw(player):
+FONT = pygame.font.SysFont("comicsans", 30)
+
+def draw(player, elapsed_time):
     WIN.blit(BG, (0,0))
+
+    time_text = FONT.render(f'Time: {round(elapsed_time)}s', 1, "white")
+    WIN.blit(time_text, (10,10))
+
 
     pygame.draw.rect(WIN, "red", player)
 
@@ -31,10 +38,16 @@ def main():
     
     clock = pygame.time.Clock()
 
+    start_time = time.time()
+    elapsed_time = 0
+
 
     while run:
         # framerate (the number of times the while loop will be running)
         clock.tick(60)
+
+        # calculate the elapsed time since the start of the program or a specific event
+        elapsed_time = time.time() - start_time
 
         # first, we check if the user has pressed on the exit button
         for event in pygame.event.get():
@@ -52,7 +65,7 @@ def main():
         
 
 
-        draw(player)
+        draw(player, elapsed_time)
     
     pygame.quit()
 
