@@ -10,7 +10,7 @@ def main():
     run = True
 
     while run:
-        # first we checks if the user press on the exit button
+        # first, we check if the user has pressed on the exit button
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
