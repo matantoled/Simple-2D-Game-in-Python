@@ -8,8 +8,16 @@ pygame.display.set_caption("Breakout!")
 
 BG = pygame.transform.scale(pygame.image.load("sources/bg.jpeg"), (WIDTH, HEIGHT))
 
-def draw():
+PLAYER_WIDTH = 40
+PLAYER_HEIGHT = 60
+
+PLAYER_VEL = 5
+
+def draw(player):
     WIN.blit(BG, (0,0))
+
+    pygame.draw.rect(WIN, "red", player)
+
     # refresh the display
     pygame.display.update()
 
@@ -18,13 +26,24 @@ def draw():
 def main():
     run = True
 
+    player = pygame.Rect(200, HEIGHT - PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT)
+
     while run:
         # first, we check if the user has pressed on the exit button
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
-        draw()
+        
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            player.x -= PLAYER_VEL
+        if keys[pygame.K_RIGHT]:
+            player.x += PLAYER_VEL
+        
+
+
+        draw(player)
     
     pygame.quit()
 
