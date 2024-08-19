@@ -1,8 +1,10 @@
 {
     "cSpell.words": [
         "blit",
+        "collidepoint",
         "colliderect",
         "comicsans",
+        "MOUSEBUTTONDOWN",
         "pygame"
     ]
 }
