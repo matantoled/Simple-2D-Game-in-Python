@@ -59,24 +59,19 @@ def main():
     start_time = time.time()
     elapsed_time = 0
 
-    # the first star that we add will be added in 2000 milliseconds
-    star_add_increment = 2000
+    star_add_increment = 2000   # the first star that we add will be added in 2000 milliseconds
 
-    # tells us when we should add the next star
-    star_count = 0
+    star_count = 0  # tells us when we should add the next star
 
-    # all the stars are currently on the screen
-    stars = []
+    
+    stars = []      # all the stars are currently on the screen
 
     hit = False
     hit_star = None  # To keep track of the star that hits the player
 
     while run:
-        # framerate (the number of times the while loop will be running)
-        star_count += clock.tick(60)
-
-        # calculate the elapsed time since the start of the program or a specific event
-        elapsed_time = time.time() - start_time
+        star_count += clock.tick(60) # framerate (the number of times the while loop will be running)
+        elapsed_time = time.time() - start_time # calculate the elapsed time since the start of the program or a specific event
 
         if star_count > star_add_increment:
             for _ in range(3):
